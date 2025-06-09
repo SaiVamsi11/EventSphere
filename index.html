@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventSphere- Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="techclub-style-2025.css"/>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        :root {
+            --mulberry: #4b2c35;  /* 60% - Primary color */
+            --blush: #f7d5dc;     /* 30% - Secondary color */
+            --black: #000000;     /* 10% - Accent color */
+            --navbar-bg: #150303; /* New darker shade for navbar */
+        }
+        #logo{
+            height: 50px;
+            width: 50px; 
+            border-radius: 50%; 
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--mulberry);
+            color: var(--blush);
+            background: linear-gradient(135deg, var(--mulberry) 0%, var(--black) 100%);
+        }
+        .navbar {
+            background-color: var(--navbar-bg);
+            box-shadow: 0 4px 15px rgba(229, 132, 172, 0.737);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+        .navbar-light .navbar-nav .nav-link {
+            color: var(--blush);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            margin: 0 0.2rem;
+            transition: all 0.3s ease;
+        }
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .hero-section {
+            /* background: linear-gradient(135deg, var(--mulberry) 0%, var(--black) 100%); */
+            min-height: 100vh;
+            padding: 100px 0;
+        }
+        .feature-card {
+            background: var(--black);
+            border: 1px solid var(--blush);
+            color: var(--blush);
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 5px 15px rgba(247, 213, 220, 0.2);
+        }
+        .stats-card {
+            background: var(--black);
+            color: var(--blush);
+            border: 2px solid var(--blush);
+        }
+        .stat-number {
+            color: var(--blush);
+        }
+        .btn-custom {
+            background: var(--black);
+            color: var(--blush);
+            border: 1px solid var(--blush);
+            transition: all 0.3s ease;
+        }
+        .btn-custom:hover {
+            background: var(--blush);
+            color: var(--black);
+            transform: translateY(-2px);
+        }
+        .sidebar {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: var(--black);
+            z-index: 1000;
+            padding: 2rem;
+            transition: right 0.3s ease-in-out;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+        }
+        .sidebar.active {
+            right: 0;
+        }
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--blush);
+        }
+        .sidebar-header h3 {
+            color: var(--blush);
+            margin: 0;
+            flex: 1;
+        }
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--blush);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+        }
+        .sidebar-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border: 1px solid var(--blush);
+            border-radius: 8px;
+        }
+        .sidebar-section h4 {
+            color: var(--blush);
+            margin-bottom: 1rem;
+        }
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+        }
+        .sidebar-btn {
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--blush);
+            color: var(--blush);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+        .sidebar-btn:hover {
+            background: var(--blush);
+            color: var(--black);
+            transform: translateY(-2px);
+        }
+        /* .img-fluid{
+            max-width: 100%;
+            height: auto;
+        } */
+        .lottie-iframe {
+            width: 100% !important;
+            height: 500px;
+            border: none;
+            max-width: 1000px;
+        }
+        .footer {
+            color: var(--blush);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="logo.jpg" id="logo" alt="ACM Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="aboutus.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+                    <li class="nav-item"><button class="btn btn-custom ms-2" id="sidebarBtn">Portal Access</button></li><!--this is the sidebar code -->
+                    <div class="sidebar" id="sidebar">
+                        <div class="sidebar-header">
+                            <h3>Portal Access</h3>
+                            <button class="close-btn">&times;</button>
+                        </div>              
+                        <div class="sidebar-section">
+                            <h4>Admin Access</h4>
+                            <div class="btn-group">
+                                <a href="admin-login.html" class="sidebar-btn">Login</a>
+                                <a href="admin-register.html" class="sidebar-btn">Register</a>
+                            </div>
+                        </div>
+                        <div class="sidebar-section">
+                            <h4>Student Access</h4>
+                            <div class="btn-group">
+                                <a href="login_signup.html" class="sidebar-btn">Login</a>
+                                <a href="student-register.html" class="sidebar-btn">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add this script before closing body tag -->
+                    <script>
+                        const sidebar = document.getElementById('sidebar');
+                        const sidebarBtn = document.getElementById('sidebarBtn');
+                        const closeBtn = document.querySelector('.close-btn');
+                        sidebarBtn.addEventListener('click', () => {
+                            sidebar.classList.add('active');
+                            sidebarBtn.style.display = 'none';
+                        });
+                        closeBtn.addEventListener('click', () => {
+                            sidebar.classList.remove('active');
+                            sidebarBtn.style.display = 'block';
+                        });
+                        document.addEventListener('click', (e) => {
+                            if (!sidebar.contains(e.target) && e.target !== sidebarBtn) {
+                                sidebar.classList.remove('active');
+                                sidebarBtn.style.display = 'block';
+                            }
+                        });
+                    </script>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Welcome to EventSphere</h1>
+                    <p class="lead mb-4">Empowering students through technology, innovation, and collaboration. Join our community of passionate developers and tech enthusiasts.</p>
+                    <a href="admin-login.html" class="btn btn-custom btn-lg">Get Started</a>
+                </div>
+                <div class="col-lg-6">
+                    <iframe 
+                        src="https://lottie.host/embed/60c3bc67-8903-434f-9f5e-e3d1fe59a9c8/K7Kmpiq12f.lottie" 
+                        alt="Hero Image" 
+                        class="lottie-iframe">
+                    </iframe>
+                    </div>
+                    
+            </div>
+        </div>
+    </section>
+    <!-- Replace the existing event management section -->
+    <div class="event-management-section">
+        <div class="event-management-container" data-aos="fade-up">
+            <div class="event-management-content">
+                <div class="icon-container">
+                    <i class="fas fa-calendar-plus pulse"></i>
+                </div>
+                <h4>Event Management</h4>
+                <p class="event-desc">Create and manage upcoming events for the community</p>
+                <a href="create.html" class="sidebar-btn create-event" id="createEventBtn">
+                    <i class="fas fa-plus"></i> Create New Event
+                </a>
+                <div class="event-stats">
+                    <div class="stat">
+                        <span class="number">0</span>
+                        <span class="label">Active Events</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number">0</span>
+                        <span class="label">Participants</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add before closing body tag -->
+    <script src="js/eventManager.js"></script>
+    <script>
+        const eventManager = new EventManager();
+    </script>
+    
+    <!-- Add this Google Font link in the head section -->
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Add these styles -->
+    <style>
+        .hero-section h1 {
+            font-family: 'Audiowide', cursive;
+            /* Creates a gradient background that will be used for the text */
+            background: linear-gradient(120deg, var(--blush), #ffffff, var(--blush));
+            /* Makes the gradient background 200% wide to enable the shine animation */
+            background-size: 200% auto;
+            /* -webkit-background-clip: text clips the background to only show within the text */
+            -webkit-background-clip: text;
+            /* Makes the text transparent so the gradient background shows through */
+            -webkit-text-fill-color: transparent;
+            /* Applies two animations: shine effect and floating movement */
+            animation: shine 3s linear infinite, floatText 4s ease-in-out infinite;
+            letter-spacing: 2px;
+        }
+    
+        .hero-section .lead {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.25rem;
+            line-height: 1.8;
+            opacity: 0;
+            animation: slideUp 1.2s ease forwards;
+            letter-spacing: 0.5px;
+        }
+    
+        .hero-section .btn-custom {
+            animation: pulseButton 2s infinite;
+        }
+    
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+    
+        @keyframes floatText {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    
+        @keyframes slideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        @keyframes pulseButton {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(247, 213, 220, 0.7);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(247, 213, 220, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(247, 213, 220, 0);
+            }
+        }
+    </style>
+    <style>
+        .event-management-section {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .event-management-container {
+            background: rgba(75, 44, 53, 0.9); /* Using --mulberry with opacity */
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--blush);
+            border-radius: 15px;
+            padding: 2.5rem;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .event-management-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(247, 213, 220, 0.3);
+            background: rgba(75, 44, 53, 0.95);
+        }
+
+        .icon-container i {
+            font-size: 2.5rem;
+            color: var(--blush);
+            text-shadow: 0 0 10px rgba(247, 213, 220, 0.3);
+        }
+
+        .event-desc {
+            color: var(--blush);
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .create-event {
+            background: var(--black);
+            border: 2px solid var(--blush);
+            color: var(--blush);
+            padding: 1rem 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .create-event:hover {
+            background: var(--blush);
+            color: var(--black);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(247, 213, 220, 0.3);
+        }
+
+        .event-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid rgba(247, 213, 220, 0.2);
+        }
+
+        .stat .number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--blush);
+            text-shadow: 0 0 10px rgba(247, 213, 220, 0.2);
+        }
+
+        .stat .label {
+            font-size: 1rem;
+            color: var(--blush);
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+    </style>
+    <!-- Features Section -->
+    <section class="events-section">
+        <h2 class="section-title">Latest Events</h2>
+        <p class="section-subtitle">Discover our recent and upcoming events at ACM GMRIT</p>
+    
+        <div class="events-container">
+          <!-- Event Card 1 -->
+          <div class="event-card">
+            <img src="https://gmrit.edu.in/studentActivities/AssociationforComputingMachinery(ACM)/image7.jpg" alt="Event 1" class="event-image" />
+            <div class="event-content">
+              <p class="event-date">📅 12/10/2024</p>
+              <h3 class="event-title">Empowering Future Innovators: GMRIT ACM Hosts Hour of Code…</h3>
+              <p class="event-desc">
+                On Tuesday, December 10th, 2024, the ACM Student Chapter of GMRIT, Hyderabad (Bachupally Campus), successfully hosted the Hour of Code…
+              </p>
+              <a href="1.html" class="read-more-btn">Read more →</a>
+            </div>
+          </div>
+    
+          <!-- Event Card 2 -->
+          <div class="event-card">
+            <img src="https://jec.ac.in/wp-content/uploads/2023/02/textile-about-5.jpg" alt="Event 2" class="event-image" />
+            <div class="event-content">
+              <p class="event-date">📅 12/3/2024</p>
+              <h3 class="event-title">GMRIT ACM Student Chapter Outreach Session at GRIET –…</h3>
+              <p class="event-desc">
+                On December 3rd, 2023, the ACM Student Chapter of GMRIT, Hyderabad, successfully conducted an outreach session at Gokaraju Rangaraju Institu…
+              </p>
+              <a href="2.html" class="read-more-btn">Read more →</a>
+            </div>
+          </div>
+    
+          <!-- Event Card 3 -->
+          <div class="event-card">
+            <img src="https://th.bing.com/th/id/OIP.lEGEPnsX7fjO-tWPw5yOewHaFj?w=800&h=600&rs=1&pid=ImgDetMain" alt="Event 3" class="event-image" />
+            <div class="event-content">
+              <p class="event-date">📅 10/18/2024</p>
+              <h3 class="event-title">GMRIT Brings Together Visionaries of Technology at AC…</h3>
+              <p class="event-desc">
+                GMRIT Campus recently hosted the ACM India Regional Chapter Summit, bringing together the brightest minds and influential leaders in…
+              </p>
+              <a href="3.html" class="read-more-btn">Read more →</a>
+            </div>
+          </div>
+        </div>             
+    <br><br><br><br><br>
+    <section class="hero">
+        <h1>Join GMRIT Bachupally's Biggest Tech Club</h1>
+        <p>Be part of a community that's shaping the future of technology</p>
+        <div class="stats">
+          <div class="card">
+            <h2 id="members">0+</h2>
+            <p>Members</p>
+          </div>
+          <div class="card">
+            <h2 id="events">0+</h2>
+            <p>Events</p>
+          </div>
+          <div class="card">
+            <h2 id="talks">0+</h2>
+            <p>Tech Talks</p>
+          </div>
+        </div>
+      </section>
+      <br><br><br><br><br> <br><br>
+          <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About ACM CodeSpace</h5>
+                    <p>A platform for students to learn, grow, and excel in the field of computer science and technology.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">About Us</a></li>
+                        <li><a href="#" class="text-white">Events</a></li>
+                        <li><a href="#" class="text-white">Team</a></li>
+                        <li><a href="#" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect With Us</h5>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4">
+            <div class="text-center mt-3">
+                <p>&copy; 2024 GMRIT EventSphere. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="stats-counter-anim.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

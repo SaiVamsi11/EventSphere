@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event - EventSphere</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style1.css">
+
+    <!-- Add this after your existing CSS links -->
+    <!-- Replace the entire style section -->
+    <style>
+        :root {
+            --mulberry: #4b2c35;  /* 60% - Primary color */
+            --blush: #f7d5dc;     /* 30% - Secondary color */
+            --black: #000000;     /* 10% - Accent color */
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--black) 0%, var(--mulberry) 50%, var(--black) 100%);
+            min-height: 100vh;
+            color: var(--blush);
+        }
+
+        .create-form-container {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding: 2.5rem;
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.9), rgba(75, 44, 53, 0.8));
+            backdrop-filter: blur(15px);
+            border: 2px solid var(--blush);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-card {
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.8));
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--blush);
+            transition: all 0.3s ease;
+        }
+
+        .form-card:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.98), rgba(75, 44, 53, 0.9));
+            box-shadow: 0 5px 15px rgba(247, 213, 220, 0.2);
+            border-color: var(--blush);
+        }
+
+        .form-label {
+            color: var(--blush);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control, .form-select {
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.8), rgba(75, 44, 53, 0.4));
+            border: 2px solid var(--blush);
+            color: var(--blush);
+            font-size: 1rem;
+            padding: 0.8rem;
+            border-radius: 10px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.9), rgba(75, 44, 53, 0.6));
+            border-color: var(--blush);
+            box-shadow: 0 0 15px rgba(247, 213, 220, 0.3);
+            color: var(--blush);
+        }
+
+        .form-select option {
+            background: var(--black);
+            color: var(--blush);
+            padding: 10px;
+        }
+
+        h2 {
+            color: var(--blush);
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(120deg, var(--blush), #ffffff, var(--blush));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+        }
+
+        .btn-submit {
+            background: linear-gradient(145deg, var(--black), var(--mulberry));
+            color: var(--blush);
+            font-weight: 600;
+            padding: 12px 40px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            border: 2px solid var(--blush);
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(145deg, var(--blush), #ffffff);
+            color: var(--black);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* Style for date input color */
+        input[type="date"] {
+            color-scheme: dark;
+        }
+    </style>
+</head>
+<body>
+    <!-- Update the form structure -->
+    <div class="container">
+        <div class="create-form-container">
+            <h2 class="text-center mb-4">Create New Event</h2>
+            <form id="eventForm">
+                <div class="form-card">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Event Title</label>
+                            <input type="text" name="title" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Event Type</label>
+                            <select name="type" class="form-select" required>
+                                <option value="">Select Type</option>
+                                <option value="workshop">Workshop</option>
+                                <option value="seminar">Seminar</option>
+                                <option value="competition">Competition</option>
+                                <option value="hackathon">Hackathon</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-card">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Date</label>
+                            <input type="date" name="date" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Venue</label>
+                            <select name="venue" class="form-select" required>
+                                <option value="">Select Venue</option>
+                                <option value="seminar-hall-1">Seminar Hall - 1</option>
+                                <option value="seminar-hall-2">Seminar Hall - 2</option>
+                                <option value="computer-lab-1">Computer Lab - 1</option>
+                                <option value="computer-lab-2">Computer Lab - 2</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-card">
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea name="description" class="form-control" rows="4" required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-card">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Maximum Participants</label>
+                            <input type="number" name="maxParticipants" class="form-control" min="1" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Registration Deadline</label>
+                            <input type="date" name="deadline" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-submit">Create Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('eventForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                title: this.querySelector('[name="title"]').value,
+                type: this.querySelector('[name="type"]').value,
+                date: this.querySelector('[name="date"]').value,
+                venue: this.querySelector('[name="venue"]').value,
+                description: this.querySelector('[name="description"]').value,
+                maxParticipants: this.querySelector('[name="maxParticipants"]').value,
+                deadline: this.querySelector('[name="deadline"]').value
+            };
+
+            // Store in localStorage (temporary solution)
+            let events = JSON.parse(localStorage.getItem('events') || '[]');
+            events.push({
+                id: Date.now(),
+                ...formData,
+                status: 'active',
+                participants: 0
+            });
+            localStorage.setItem('events', JSON.stringify(events));
+
+            alert('Event created successfully!');
+            window.location.href = 'index.html';
+        });
+
+        // Set minimum date as today for date inputs
+        const dateInputs = document.querySelectorAll('input[type="date"]');
+        const today = new Date().toISOString().split('T')[0];
+        dateInputs.forEach(input => {
+            input.min = today;
+        });
+    </script>
+</body>
+</html>

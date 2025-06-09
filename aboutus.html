@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About ACM-GMRIT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }  
+              /*nav bar  */
+              .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000;
+  padding: 10px 40px;
+}
+
+.logo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #f25f5c;
+}
+
+.portal-btn {
+  border: 1px solid #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.portal-btn:hover {
+  background-color: #fff;
+  color: #000;
+}
+        :root {
+            --mulberry: #4b2c35;  /* 60% - Primary color */
+            --blush: #f7d5dc;     /* 30% - Secondary color */
+            --black: #000000;     /* 10% - Accent color */
+            --dark-bg: #1a1013;   /* Dark background */
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--blush);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+        }
+        
+        /* About Section Styles */
+        .about-section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section with Animation */
+        .about-hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .lottie-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.4; /* Increased from 0.2 to 0.4 for better visibility */
+        }
+        
+        .lottie-bg iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px;
+            max-width: 900px;
+            margin: 20px;
+            /* background-color: rgba(26, 16, 19, 0.6); Semi-transparent dark background */
+            border-radius: 15px;
+            backdrop-filter: blur(5px); /* Soft blur effect */
+        }
+        
+        .section-title {
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 6rem;
+            font-weight: 700;
+            font-style: italic;
+            color: var(--blush);
+            margin-bottom: 20px;
+            /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); Darker shadow for better contrast */
+            line-height: 1.1;
+        }
+        
+        .section-title p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 300;
+            font-style: italic;
+            background: linear-gradient(45deg, var(--blush), #d41d82);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.4;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Content Sections */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .reverse {
+            flex-direction: row-reverse;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--blush);
+            font-style: italic;
+        }
+        
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: rgba(247, 213, 220, 0.9); /* Slightly brighter text */
+            font-weight: 300;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            /* box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); */
+            border: 1px solid rgba(75, 44, 53, 0.7);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.7s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .section-title h2 {
+                font-size: 5rem;
+            }
+            
+            .section-title p {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .section-title h2 {
+                font-size: 4rem;
+            }
+            
+            .section-title p {
+                font-size: 1.5rem;
+            }
+            
+            .about-text h3 {
+                font-size: 2rem;
+            }
+            
+            .lottie-bg {
+                opacity: 0.3; /* Slightly less visible on smaller screens */
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: 20px;
+                background-color: rgba(26, 16, 19, 0.7); /* Darker background on mobile */
+            }
+            
+            .section-title h2 {
+                font-size: 3rem;
+            }
+            
+            .section-title p {
+                font-size: 1.2rem;
+            }
+            
+            .about-text h3 {
+                font-size: 1.8rem;
+            }
+            
+            .about-text p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title p {
+                font-size: 1rem;
+            }
+            
+            .lottie-bg {
+                opacity: 0.25; /* Further reduced on very small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+          <img src="logo.jpg" alt="Technova Logo" />
+        </div>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="aboutus.html">About</a>
+          <a href="events.html">Events</a>
+          <a href="team.html">Team</a>
+        </nav>
+      </header>
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-hero">
+                <div class="lottie-bg">
+                    <iframe 
+                        src="https://lottie.host/embed/4fc5faab-a090-4d3d-ab99-c48133f897ae/MIKcoN37dt.lottie" 
+                        frameborder="0"
+                        allowfullscreen
+                    ></iframe>
+                </div>
+                
+                <!-- Content Foreground -->
+                <div class="hero-content">
+                    <div class="section-title">
+                        <h2>About Us</h2>
+                        <p>Unleashing Innovation. Create Impact</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Mission</h3>
+                    <p>ACM-GMRIT is dedicated to fostering technical growth and innovation among students. We aim to bridge the gap between academia and industry by organizing workshops, hackathons, and networking events.</p>
+                    <p>Our chapter provides a platform for students to enhance their technical skills, collaborate on projects, and connect with industry professionals.</p>
+                    <p>We believe in learning by doing and encourage hands-on experience through various technical and non-technical events throughout the year.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="ACM-GMRIT Team">
+                </div>
+            </div>
+            
+            <div class="about-content reverse">
+                <div class="about-text">
+                    <h3>What We Do</h3>
+                    <p>We organize a variety of events including technical workshops, coding competitions, hackathons, guest lectures, and networking sessions.</p>
+                    <p>Our flagship events include annual hackathons, tech symposiums, and coding marathons that attract participants from across the region.</p>
+                    <p>We also conduct regular study groups, project showcases, and career development sessions to help students prepare for their professional journeys.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="ACM-GMRIT Event">
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

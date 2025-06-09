@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeHunt - Events</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --mulberry: #4b2c35;
+            --blush: #f7d5dc;
+            --black: #000000;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--mulberry) 0%, var(--black) 100%);
+            color: var(--blush);
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: var(--black);
+            box-shadow: 0 2px 10px rgba(247, 213, 220, 0.2);
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: var(--blush);
+        }
+
+        .events-header {
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px 20px;
+        }
+
+        .event-card {
+            background: var(--black);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--blush);
+            height: 100%;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(247, 213, 220, 0.2);
+        }
+
+        .event-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .event-card:hover .event-image img {
+            transform: scale(1.1);
+        }
+
+        .event-date {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--black);
+            color: var(--blush);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .event-content {
+            padding: 25px;
+        }
+
+        .event-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--blush);
+        }
+
+        .event-desc {
+            color: var(--blush);
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            color: var(--blush);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .read-more i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: var(--blush);
+            opacity: 0.8;
+        }
+
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+
+        .event-tag {
+            display: inline-block;
+            padding: 5px 12px;
+            background: var(--mulberry);
+            color: var(--blush);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            margin-bottom: 15px;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--blush);
+            color: var(--blush);
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--blush);
+            color: var(--black);
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navbar (same as index.html) -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">CodeHunt</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="aboutus.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="events.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Update the events header section -->
+    <header class="events-header">
+        <h1 data-aos="fade-up" class="main-title">Our Events</h1>
+        <p data-aos="fade-up" data-aos-delay="100" class="header-subtitle">Discover the latest happenings at CodeHunt</p>
+        
+        <!-- Adding back the filters -->
+        <div class="filters" data-aos="fade-up" data-aos-delay="200">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Workshops</button>
+            <button class="filter-btn">Hackathons</button>
+            <button class="filter-btn">Webinars</button>
+        </div>
+    </header>
+    
+    <!-- Add these styles -->
+    <style>
+        .events-header {
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+    
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--blush), #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+    
+        .header-subtitle {
+            font-size: 1.4rem;
+            color: var(--blush);
+            opacity: 0.9;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease-out;
+        }
+    
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 0.9;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <!-- Add these styles to your existing style section -->
+    <style>
+        .past-events-header {
+            text-align: center;
+            margin: 50px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .header-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--blush), transparent);
+            flex: 1;
+            opacity: 0.6;
+        }
+
+        .past-events-header h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin: 0;
+            padding: 0 20px;
+            color: var(--blush);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: glowText 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowText {
+            from {
+                text-shadow: 0 0 10px var(--blush),
+                               0 0 20px var(--blush),
+                               0 0 30px var(--mulberry);
+            }
+            to {
+                text-shadow: 0 0 20px var(--blush),
+                               0 0 30px var(--blush),
+                               0 0 40px var(--mulberry);
+            }
+        }
+    </style>
+     <!-- Add this after the filters section and before the events grid -->
+     <div class="past-events-header" data-aos="fade-up">
+        <div class="header-line"></div>
+        <h2 class="glow">Past Events</h2>
+        <div class="header-line"></div>
+    </div>
+
+    <!-- Events Grid -->
+    <div class="container">
+        <div class="events-grid">
+            <!-- Event Card 1 -->
+            <div class="event-card" data-aos="fade-up">
+                <div class="event-image">
+                    <img src="https://gmrit.edu.in/studentActivities/AssociationforComputingMachinery(ACM)/image7.jpg" alt="Event 1">
+                    <div class="event-date">📅 Dec 10, 2024</div>
+                </div>
+                <div class="event-content">
+                    <span class="event-tag">Workshop</span>
+                    <h3 class="event-title">Python for Data Science</h3>
+                    <p class="event-desc">Master data analysis and visualization with Python in this hands-on workshop. Perfect for beginners!</p>
+                    <a href="p.html" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Event Card 2 -->
+            <div class="event-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="event-image">
+                    <img src="https://gmrit.edu.in/studentActivities/AssociationforComputingMachinery(ACM)/image7.jpg" alt="Event 2">
+                    <div class="event-date">📅 Dec 15, 2024</div>
+                </div>
+                <div class="event-content">
+                    <span class="event-tag">Hackathon</span>
+                    <h3 class="event-title">CodeHunt Hack 2024</h3>
+                    <p class="event-desc">48-hour coding challenge to build innovative solutions for real-world problems. Amazing prizes await!</p>
+                    <a href="p.html" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Event Card 3 -->
+            <div class="event-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="event-image">
+                    <img src="https://gmrit.edu.in/studentActivities/AssociationforComputingMachinery(ACM)/image7.jpg" alt="Event 3">
+                    <div class="event-date">📅 Dec 20, 2024</div>
+                </div>
+                <div class="event-content">
+                    <span class="event-tag">Webinar</span>
+                    <h3 class="event-title">AI/ML Career Roadmap</h3>
+                    <p class="event-desc">Join industry experts as they share insights about career opportunities in Artificial Intelligence and Machine Learning.</p>
+                    <a href="p.html" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Event Card 4 -->
+            <div class="event-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="event-image">
+                    <img src="https://gmrit.edu.in/studentActivities/AssociationforComputingMachinery(ACM)/image7.jpg" alt="Event 4">
+                    <div class="event-date">📅 Jan 5, 2025</div>
+                </div>
+                <div class="event-content">
+                    <span class="event-tag">Workshop</span>
+                    <h3 class="event-title">Web Development Bootcamp</h3>
+                    <p class="event-desc">Learn modern web development with React, Node.js, and MongoDB in this intensive bootcamp session.</p>
+                    <a href="p.html" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Event Card 5 -->
+            <div class="event-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="event-image">
+                    <img src="https://gmrit.edu.in/studentActivities/AssociationforComputingMachinery(ACM)/image7.jpg" alt="Event 5">
+                    <div class="event-date">📅 Jan 15, 2025</div>
+                </div>
+                <div class="event-content">
+                    <span class="event-tag">Hackathon</span>
+                    <h3 class="event-title">IoT Innovation Challenge</h3>
+                    <p class="event-desc">Build smart solutions using IoT technologies. Great opportunity for hardware and software enthusiasts.</p>
+                    <a href="p.html" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Event Card 6 -->
+            <div class="event-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="event-image">
+                    <img src="https://gmrit.edu.in/studentActivities/AssociationforComputingMachinery(ACM)/image7.jpg" alt="Event 6">
+                    <div class="event-date">📅 Jan 20, 2025</div>
+                </div>
+                <div class="event-content">
+                    <span class="event-tag">Webinar</span>
+                    <h3 class="event-title">Cybersecurity Trends 2025</h3>
+                    <p class="event-desc">Expert discussion on emerging cybersecurity threats and career opportunities in information security.</p>
+                    <a href="p.html" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Event Card 7 -->
+            <div class="event-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="event-image">
+                    <img src="https://gmrit.edu.in/studentActivities/AssociationforComputingMachinery(ACM)/image7.jpg" alt="Event 7">
+                    <div class="event-date">📅 Feb 5, 2025</div>
+                </div>
+                <div class="event-content">
+                    <span class="event-tag">Workshop</span>
+                    <h3 class="event-title">Cloud Computing Essentials</h3>
+                    <p class="event-desc">Deep dive into AWS and Azure fundamentals. Learn cloud architecture, deployment, and best practices.</p>
+                    <a href="p.html" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Event Card 8 -->
+            <div class="event-card" data-aos="fade-up" data-aos-delay="700">
+                <div class="event-image">
+                    <img src="https://gmrit.edu.in/studentActivities/AssociationforComputingMachinery(ACM)/image7.jpg" alt="Event 8">
+                    <div class="event-date">📅 Feb 15, 2025</div>
+                </div>
+                <div class="event-content">
+                    <span class="event-tag">Hackathon</span>
+                    <h3 class="event-title">Blockchain Innovation Sprint</h3>
+                    <p class="event-desc">Build decentralized applications in this 36-hour hackathon. Explore Web3 and cryptocurrency innovations.</p>
+                    <a href="p.html" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Event Card 9 -->
+            <div class="event-card" data-aos="fade-up" data-aos-delay="800">
+                <div class="event-image">
+                    <img src="https://gmrit.edu.in/studentActivities/AssociationforComputingMachinery(ACM)/image7.jpg" alt="Event 9">
+                    <div class="event-date">📅 Feb 25, 2025</div>
+                </div>
+                <div class="event-content">
+                    <span class="event-tag">Webinar</span>
+                    <h3 class="event-title">DevOps Best Practices</h3>
+                    <p class="event-desc">Industry experts share insights on CI/CD pipelines, containerization, and modern deployment strategies.</p>
+                    <a href="p.html" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Event Card 10 -->
+            <div class="event-card" data-aos="fade-up" data-aos-delay="900">
+                <div class="event-image">
+                    <img src="https://gmrit.edu.in/studentActivities/AssociationforComputingMachinery(ACM)/image7.jpg" alt="Event 10">
+                    <div class="event-date">📅 Mar 5, 2025</div>
+                </div>
+                <div class="event-content">
+                    <span class="event-tag">Workshop</span>
+                    <h3 class="event-title">Mobile App Development</h3>
+                    <p class="event-desc">Hands-on workshop on Flutter and React Native. Build cross-platform mobile applications.</p>
+                    <a href="p.html" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Event Card 11 -->
+            <div class="event-card" data-aos="fade-up" data-aos-delay="1000">
+                <div class="event-image">
+                    <img src="https://gmrit.edu.in/studentActivities/AssociationforComputingMachinery(ACM)/image7.jpg" alt="Event 11">
+                    <div class="event-date">📅 Mar 15, 2025</div>
+                </div>
+                <div class="event-content">
+                    <span class="event-tag">Hackathon</span>
+                    <h3 class="event-title">AI/ML Challenge</h3>
+                    <p class="event-desc">Create innovative solutions using machine learning and artificial intelligence. Solve real-world problems.</p>
+                    <a href="p.html" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Event Card 12 -->
+            <div class="event-card" data-aos="fade-up" data-aos-delay="1100">
+                <div class="event-image">
+                    <img src="https://gmrit.edu.in/studentActivities/AssociationforComputingMachinery(ACM)/image7.jpg" alt="Event 12">
+                    <div class="event-date">📅 Mar 25, 2025</div>
+                </div>
+                <div class="event-content">
+                    <span class="event-tag">Webinar</span>
+                    <h3 class="event-title">Future of Tech Careers</h3>
+                    <p class="event-desc">Leading tech recruiters discuss emerging roles, skills in demand, and how to prepare for future opportunities.</p>
+                    <a href="p.html" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                document.querySelector('.filter-btn.active').classList.remove('active');
+                button.classList.add('active');
+                
+                const filterValue = button.textContent.trim().toLowerCase();
+                const eventCards = document.querySelectorAll('.event-card');
+                
+                eventCards.forEach(card => {
+                    const cardTag = card.querySelector('.event-tag').textContent.toLowerCase();
+                    
+                    if (filterValue === 'all' || cardTag === filterValue.slice(0, -1)) { // Remove 's' from workshops/hackathons/webinars
+                        card.style.display = 'block';
+                        // Reset animation
+                        card.style.animation = 'none';
+                        card.offsetHeight; // Trigger reflow
+                        card.style.animation = null;
+                        card.setAttribute('data-aos', 'fade-up');
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Refresh AOS animations
+                AOS.refresh();
+            });
+        });
+    </script>
+
+   
+    
+        <!-- Add these styles to your existing style section -->
+        <style>
+            .past-events-header {
+                text-align: center;
+                margin: 50px auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+                max-width: 800px;
+                padding: 0 20px;
+            }
+    
+            .header-line {
+                height: 2px;
+                background: linear-gradient(90deg, transparent, var(--blush), transparent);
+                flex: 1;
+                opacity: 0.6;
+            }
+    
+            .past-events-header h2 {
+                font-size: 2.5rem;
+                font-weight: 600;
+                margin: 0;
+                padding: 0 20px;
+                color: var(--blush);
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                animation: glowText 2s ease-in-out infinite alternate;
+            }
+    
+            @keyframes glowText {
+                from {
+                    text-shadow: 0 0 10px var(--blush),
+                               0 0 20px var(--blush),
+                               0 0 30px var(--mulberry);
+                }
+                to {
+                    text-shadow: 0 0 20px var(--blush),
+                               0 0 30px var(--blush),
+                               0 0 40px var(--mulberry);
+                }
+            }
+        </style>
+
+        <!-- After the first 6 event cards -->
+        <div class="show-more-container" data-aos="fade-up">
+            <button id="showMoreBtn" class="show-more-btn">Show More Events</button>
+        </div>
+    
+        <!-- Add this before closing the events-grid div -->
+        <div class="future-events-header" data-aos="fade-up">
+            <div class="header-line"></div>
+            <h2 class="glow">Future Events</h2>
+            <div class="header-line"></div>
+        </div>
+
+
+        
+    
+        <!-- Add these styles -->
+        <style>
+            .show-more-container {
+                text-align: center;
+                margin: 40px 0;
+            }
+    
+            .show-more-btn {
+                background: transparent;
+                border: 2px solid var(--blush);
+                color: var(--blush);
+                padding: 12px 30px;
+                border-radius: 25px;
+                font-size: 1.1rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+    
+            .show-more-btn:hover {
+                background: var(--blush);
+                color: var(--black);
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(247, 213, 220, 0.3);
+            }
+    
+            .future-events-header {
+                text-align: center;
+                margin: 80px auto 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+                max-width: 800px;
+                padding: 0 20px;
+            }
+    
+            .future-events-header h2 {
+                font-size: 2.5rem;
+                font-weight: 600;
+                margin: 0;
+                padding: 0 20px;
+                color: #ffffff;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                animation: glowTextFuture 2s ease-in-out infinite alternate;
+            }
+    
+            @keyframes glowTextFuture {
+                from {
+                    text-shadow: 0 0 10px #ffffff,
+                               0 0 20px #ffffff,
+                               0 0 30px var(--blush);
+                }
+                to {
+                    text-shadow: 0 0 20px #ffffff,
+                               0 0 30px #ffffff,
+                               0 0 40px var(--blush);
+                }
+            }
+        </style>
+    
+        <!-- Add this JavaScript before the closing body tag -->
+        <script>
+            // Hide all cards after the first 6
+            const eventCards = document.querySelectorAll('.event-card');
+            let currentlyShown = 6;
+            const increment = 3;
+    
+            // Initially hide cards beyond the first 6
+            eventCards.forEach((card, index) => {
+                if (index >= currentlyShown) {
+                    card.style.display = 'none';
+                }
+            });
+    
+            // Show More button functionality
+            const showMoreBtn = document.getElementById('showMoreBtn');
+            showMoreBtn.addEventListener('click', () => {
+                // Show next set of cards
+                for (let i = currentlyShown; i < currentlyShown + increment && i < eventCards.length; i++) {
+                    eventCards[i].style.display = 'block';
+                    eventCards[i].setAttribute('data-aos', 'fade-up');
+                }
+                
+                currentlyShown += increment;
+                
+                // Hide button if all cards are shown
+                if (currentlyShown >= eventCards.length) {
+                    showMoreBtn.style.display = 'none';
+                }
+                
+                // Refresh AOS animations
+                AOS.refresh();
+            });
+        </script>
+
+        <!-- <div class="future-events-header" data-aos="fade-up">
+            <div class="header-line"></div>
+            <div class="header-line"></div>
+            <h2 class="glow">Future Events</h2>
+            <div class="header-line"></div>
+        </div> -->
+
+        <!-- Upcoming Events -->
+        <div class="events-grid">
+            <!-- Future Event Card 1 -->
+            <div class="event-card" data-aos="fade-up">
+                <div class="event-image">
+                    <img src="https://gmrit.edu.in/studentActivities/AssociationforComputingMachinery(ACM)/image7.jpg" alt="Future Event 1">
+                    <div class="event-date">📅 Apr 10, 2025</div>
+                </div>
+                <div class="event-content">
+                    <span class="event-tag">Workshop</span>
+                    <h3 class="event-title">Quantum Computing Workshop</h3>
+                    <p class="event-desc">Explore the future of computing with quantum algorithms and practical implementations. Perfect for advanced programmers.</p>
+                    <a href="p.html" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Future Event Card 2 -->
+            <div class="event-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="event-image">
+                    <img src="https://gmrit.edu.in/studentActivities/AssociationforComputingMachinery(ACM)/image7.jpg" alt="Future Event 2">
+                    <div class="event-date">📅 Apr 20, 2025</div>
+                </div>
+                <div class="event-content">
+                    <span class="event-tag">Hackathon</span>
+                    <h3 class="event-title">Green Tech Innovation</h3>
+                    <p class="event-desc">Create sustainable technology solutions to combat climate change. Join us for 48 hours of eco-friendly innovation.</p>
+                    <a href="p.html" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Future Event Card 3 -->
+            <div class="event-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="event-image">
+                    <img src="https://gmrit.edu.in/studentActivities/AssociationforComputingMachinery(ACM)/image7.jpg" alt="Future Event 3">
+                    <div class="event-date">📅 May 5, 2025</div>
+                </div>
+                <div class="event-content">
+                    <span class="event-tag">Webinar</span>
+                    <h3 class="event-title">Metaverse Development</h3>
+                    <p class="event-desc">Deep dive into building immersive virtual worlds. Learn about AR/VR technologies and spatial computing.</p>
+                    <a href="p.html" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>

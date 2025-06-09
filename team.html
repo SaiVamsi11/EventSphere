@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - ACM-GMRIT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mulberry: #4b2c35;  /* 60% - Primary color */
+            --blush: #f7d5dc;     /* 30% - Secondary color */
+            --black: #000000;     /* 10% - Accent color */
+            --dark-bg: #1a1013;   /* Darker version of mulberry for background */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--blush);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        /*navbar*/
+        .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000;
+  padding: 10px 40px;
+}
+
+.logo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #f25f5c;
+}
+
+.portal-btn {
+  border: 1px solid #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.portal-btn:hover {
+  background-color: #fff;
+  color: #000;
+}
+        /* Background Animation */
+        .animation-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        .animation-bg iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        /* Team Section */
+        .team-section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--blush);
+            font-family: 'Montserrat', sans-serif;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .section-header p {
+            color: rgba(247, 213, 220, 0.8);
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+        
+        /* Team Filters */
+        .team-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 10px 24px;
+            background: rgba(75, 44, 53, 0.3);
+            border: 1px solid var(--mulberry);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--blush);
+            font-weight: 500;
+            backdrop-filter: blur(5px);
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--mulberry);
+            color: var(--blush);
+            border-color: var(--mulberry);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(75, 44, 53, 0.5);
+        }
+        
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            background: rgba(75, 44, 53, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(75, 44, 53, 0.3);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(75, 44, 53, 0.6);
+            border-color: var(--blush);
+        }
+        
+        .member-image {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .team-member:hover .member-image img {
+            transform: scale(1.1);
+        }
+        
+        .member-info {
+            padding: 24px;
+            text-align: center;
+        }
+        
+        .member-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--blush);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .member-info p {
+            color: rgba(247, 213, 220, 0.7);
+            margin-bottom: 20px;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .social-links a {
+            color: rgba(247, 213, 220, 0.6);
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+        
+        .social-links a:hover {
+            color: var(--blush);
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+            
+            .section-header p {
+                font-size: 1.1rem;
+            }
+            
+            .member-image {
+                height: 250px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+          <img src="logo.jpg" alt="Technova Logo" />
+        </div>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="aboutus.html">About</a>
+          <a href="events.html">Events</a>
+          <a href="team.html">Team</a>
+        </nav>
+      </header>
+    <!-- Background Animation -->
+    <div class="animation-bg">
+        <iframe src="https://lottie.host/embed/bc81a721-2678-44c2-adfd-1e553d433a5b/6jOw348qdg.lottie"></iframe>
+    </div>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Team</h2>
+                <p>The brilliant minds behind ACM-GMRIT who work tirelessly to bring you amazing events and opportunities</p>
+            </div>
+            
+            <!-- Team Filters -->
+            <div class="team-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="core">Core Team</button>
+                <button class="filter-btn" data-filter="technical">Technical</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+                <button class="filter-btn" data-filter="operations">Operations</button>
+            </div>
+            
+            <!-- Team Members Grid -->
+            <div class="team-grid">
+                <!-- Core Team -->
+                <div class="team-member" data-category="core">
+                    <div class="member-image">
+                        <img src="https://png.pngtree.com/png-vector/20240905/ourmid/pngtree-3d-cartoon-male-half-body-transparent-background-png-image_13759328.png" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Rahul Sharma</h3>
+                        <p>President</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member" data-category="core">
+                    <div class="member-image">
+                        <img src="https://img.freepik.com/premium-photo/ultimate-gaming-profile-customizable-3d-avatar-with-semicartoonic-styling-ultra-hd_1000124-240080.jpg" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Priya Patel</h3>
+                        <p>Vice President</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Technical Team -->
+                <div class="team-member" data-category="technical">
+                    <div class="member-image">
+                        <img src="https://static.vecteezy.com/system/resources/previews/022/484/651/non_2x/happy-3d-student-boy-with-books-on-white-background-transparent-background-free-png.png" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Aryan Gupta</h3>
+                        <p>Technical Lead</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member" data-category="technical">
+                    <div class="member-image">
+                        <img src="https://img.freepik.com/premium-photo/cartoon-girl-3d-character-drawing-vector-clipart-illustration_899449-43882.jpg?w=2000" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Neha Reddy</h3>
+                        <p>Web Developer</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Design Team -->
+                <div class="team-member" data-category="design">
+                    <div class="member-image">
+                        <img src="https://th.bing.com/th/id/OIP.dUKf8oyFMkXKcBn71_D63gHaHa?w=626&h=626&rs=1&pid=ImgDetMaing" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Ananya Das</h3>
+                        <p>Design Lead</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Operations Team -->
+                <div class="team-member" data-category="operations">
+                    <div class="member-image">
+                        <img src="https://png.pngtree.com/png-vector/20240125/ourmid/pngtree-3d-render-of-a-cute-little-boy-with-clipping-path-png-image_11465671.png" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Vikram Singh</h3>
+                        <p>Operations Head</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Team Filter Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const teamMembers = document.querySelectorAll('.team-member');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    teamMembers.forEach(member => {
+                        if (filterValue === 'all' || member.getAttribute('data-category') === filterValue) {
+                            member.style.display = 'block';
+                        } else {
+                            member.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Scroll animation
+            const teamSection = document.querySelector('.team-section');
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    teamSection.querySelectorAll('.team-member').forEach((member, index) => {
+                        setTimeout(() => {
+                            member.style.opacity = '1';
+                            member.style.transform = 'translateY(0)';
+                        }, index * 100);
+                    });
+                    observer.unobserve(teamSection);
+                }
+            }, { threshold: 0.1 });
+            
+            // Initial state for animation
+            teamSection.querySelectorAll('.team-member').forEach(member => {
+                member.style.opacity = '0';
+                member.style.transform = 'translateY(20px)';
+                member.style.transition = 'opacity 0.5s, transform 0.5s';
+            });
+            
+            observer.observe(teamSection);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hour of Code Event - GMRIT ACM</title>
+    <style>
+        :root {
+            --mulberry: #4b2c35;  /* 60% - Primary color */
+            --blush: #f7d5dc;     /* 30% - Secondary color */
+            --black: #000000;     /* 10% - Accent color */
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--mulberry);
+            color: var(--black);
+            line-height: 1.6;
+        }
+        
+        .event-detail-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(75, 44, 53, 0.1);
+            border: 1px solid rgba(75, 44, 53, 0.1);
+        }
+        
+        .event-detail-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--blush);
+            box-shadow: 0 4px 8px rgba(75, 44, 53, 0.1);
+        }
+        
+        .event-detail-date {
+            display: inline-block;
+            margin: 15px 0 5px;
+            padding: 5px 10px;
+            background-color: var(--mulberry);
+            color: white;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .event-detail-title {
+            color: var(--mulberry);
+            font-size: 28px;
+            margin: 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--blush);
+        }
+        
+        .event-detail-content p {
+            margin-bottom: 20px;
+        }
+        
+        .highlight-box {
+            background-color: rgba(247, 213, 220, 0.3);
+            border-left: 4px solid var(--mulberry);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight-box h3 {
+            margin-top: 0;
+            color: var(--mulberry);
+        }
+        
+        .highlight-box ul {
+            padding-left: 20px;
+        }
+        
+        .highlight-box li {
+            margin-bottom: 8px;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 25px;
+            background-color: var(--mulberry);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            border: 2px solid var(--mulberry);
+        }
+        
+        .back-button:hover {
+            background-color: white;
+            color: var(--mulberry);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(75, 44, 53, 0.2);
+        }
+        
+        .back-button::before {
+            content: "←";
+            margin-right: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .event-detail-container {
+                margin: 20px;
+                padding: 20px;
+            }
+            
+            .event-detail-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="event-detail-container">
+        <img src="https://gmrit.edu.in/studentActivities/AssociationforComputingMachinery(ACM)/image7.jpg" 
+             alt="Hour of Code Event at GMRIT" 
+             class="event-detail-image">
+        
+        <div class="event-detail-date">December 10, 2024</div>
+        <h1 class="event-detail-title">Empowering Future Innovators: GMRIT ACM Hosts Hour of Code</h1>
+        
+        <div class="event-detail-content">
+            <p>The ACM Student Chapter of GMRIT, Hyderabad made programming accessible to all students through our Hour of Code event, part of a global movement reaching tens of millions of students in over 180 countries.</p>
+            
+            <div class="highlight-box">
+                <h3>Event Highlights</h3>
+                <ul>
+                    <li><strong>150+ participants</strong> from various engineering disciplines</li>
+                    <li><strong>Beginner-friendly workshops</strong> using Scratch and Python</li>
+                    <li><strong>Industry insights</strong> from guest speaker Ms. Priya Sharma (Google Developer Expert)</li>
+                    <li><strong>Interactive coding challenges</strong> with prizes for top performers</li>
+                    <li><strong>Networking session</strong> with ACM executive members</li>
+                </ul>
+            </div>
+            
+            <p>The event commenced with an inspiring talk by our Computer Science HOD, Dr. Rajesh Kumar, who emphasized how computational thinking benefits all engineering disciplines. Participants then engaged in hands-on coding activities guided by ACM student mentors.</p>
+            
+            <p>Feedback showed 92% of attendees felt more confident about coding after the event, with many signing up for ACM's advanced programming workshops. The success of this event has paved the way for making Hour of Code an annual tradition at GMRIT.</p>
+            
+            <a href="index.html" class="back-button">Back to Events</a>
+        </div>
+    </div>
+</body>
+</html>
